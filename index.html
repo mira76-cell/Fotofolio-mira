@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nursyafika Amira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>:root{
+  --bg:#181634; --bg2:#2a2258; --lilac:#b9a8ff; --mint:#8ff0d0; --peach:#ffc2a8;
+  --text:#f4f1ff; --muted:#bdb6e0;
+}
+*{box-sizing:border-box;margin:0}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;color:var(--text);min-height:100vh;
+  background:linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;
+  overflow-x:hidden;position:relative;
+}
+h1,h2,h3,.step{font-family:'Sora',system-ui,sans-serif}
+.glow{position:fixed;border-radius:50%;filter:blur(90px);opacity:.35;pointer-events:none}
+.g1{width:340px;height:340px;background:var(--lilac);top:-80px;left:-80px}
+.g2{width:300px;height:300px;background:var(--mint);bottom:-80px;right:-60px;opacity:.22}
+
+.page{position:relative;max-width:980px;margin:0 auto;padding:clamp(1.5rem,5vw,4rem) clamp(1rem,4vw,2rem) 4rem;display:grid;gap:3.5rem}
+
+.intro{display:grid;grid-template-columns:minmax(200px,300px) 1fr;gap:clamp(1.5rem,5vw,3.5rem);align-items:center}
+.arch{
+  aspect-ratio:1;border-radius:50%;overflow:hidden;padding:7px;
+  background:linear-gradient(160deg,var(--lilac),var(--mint),var(--peach));
+  box-shadow:0 0 60px rgba(185,168,255,.35);animation:rise .9s cubic-bezier(.2,.8,.2,1);
+}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block;border-radius:50%}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(2.6rem,8vw,5rem);line-height:1.02;font-weight:700;letter-spacing:-.02em}
+.role{margin-top:1rem;font-size:1.15rem;color:var(--mint)}
+
+.journey{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:28px;padding:clamp(1.3rem,4vw,2.4rem);backdrop-filter:blur(10px);
+}
+h2{font-size:clamp(1.4rem,4vw,1.9rem);margin-bottom:1.6rem}
+.track{position:relative;display:flex;justify-content:space-between;margin-bottom:2rem}
+.track::before,.fill{content:"";position:absolute;left:28px;right:28px;top:50%;height:4px;border-radius:4px;transform:translateY(-50%)}
+.track::before{background:rgba(255,255,255,.14)}
+.fill{right:auto;width:0;background:linear-gradient(90deg,var(--lilac),var(--mint));transition:width .5s ease;z-index:0}
+.step{
+  position:relative;z-index:1;width:58px;height:58px;border-radius:50%;border:3px solid var(--bg2);
+  background:#3b3375;color:var(--muted);font-size:.95rem;font-weight:600;cursor:pointer;transition:transform .25s,background .25s,color .25s;
+}
+.step:hover{transform:scale(1.08)}
+.step.done{background:var(--lilac);color:var(--bg)}
+.step.active{background:var(--mint);color:var(--bg);transform:scale(1.2);box-shadow:0 0 0 6px rgba(143,240,208,.2)}
+button:focus-visible{outline:3px solid var(--peach);outline-offset:3px}
+
+.panel{min-height:150px;padding:1.4rem;border-radius:20px;background:rgba(0,0,0,.2)}
+.panel.swap{animation:swap .4s ease}
+@keyframes swap{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.count{color:var(--muted);font-size:.95rem}
+h3{font-size:clamp(1.5rem,5vw,2.2rem);margin:.4rem 0}
+#place{color:var(--peach);font-size:1.1rem}
+
+.nav{display:flex;justify-content:space-between;margin-top:1.2rem;gap:1rem}
+.nav button{
+  flex:1;max-width:180px;padding:.7rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.25);
+  background:none;color:var(--text);font:inherit;font-weight:500;cursor:pointer;transition:background .2s;
+}
+.nav button:hover:not(:disabled){background:rgba(255,255,255,.12)}
+.nav button:disabled{opacity:.35;cursor:default}
+
+@media (max-width:680px){
+  .intro{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .arch{width:min(70vw,260px)}
+  .step{width:50px;height:50px}
+  .track::before,.fill{left:25px;right:25px}
+}
+@media (prefers-reduced-motion:reduce){.arch,.panel.swap{animation:none}.fill,.step{transition:none}}
+
+.view[hidden]{display:none}
+.view{animation:rise .6s cubic-bezier(.2,.8,.2,1)}
+#beranda{display:grid;gap:2.5rem}
+.reason{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:28px;padding:clamp(1.3rem,4vw,2.2rem);backdrop-filter:blur(10px);max-width:640px;
+}
+.reason h2{margin-bottom:.8rem}
+.reason p{line-height:1.65;color:var(--text);max-width:60ch}
+.cta{
+  margin-top:1.4rem;padding:.8rem 1.6rem;border-radius:999px;border:0;cursor:pointer;
+  font:inherit;font-weight:700;background:linear-gradient(90deg,var(--lilac),var(--mint));color:var(--bg);
+  transition:transform .2s;
+}
+.cta:hover{transform:translateY(-2px)}
+.back{display:block;margin:1.6rem auto 0}
+@media (max-width:680px){.reason{text-align:left}}
+@media (prefers-reduced-motion:reduce){.view{animation:none}}
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<main class="page">
+
+  <div class="view" id="beranda">
+    <section class="intro">
+      <div class="arch"><img src="foto/foto.jpg" alt="Foto Nursyafika Amira"></div>
+      <div class="text">
+        <h1>Nursyafika<br>Amira</h1>
+        <p class="role">Siswa kelas 10 PPLG, SMKN 1 Bangkinang</p>
+      </div>
+    </section>
+    <section class="reason">
+      <h2>Kenapa aku masuk PPLG</h2>
+      <p>Aku ingin belajar membuat website, aplikasi, dan gim dari nol. Aku senang melihat sebuah ide berubah menjadi sesuatu yang benar-benar bisa dipakai dan dilihat orang lain.</p>
+      <button class="cta" data-go="sekolah">Lihat asal sekolahku</button>
+    </section>
+  </div>
+
+  <div class="view" id="sekolah" hidden>
+    <section class="journey" aria-label="Asal sekolah">
+      <h2>Asal sekolahku</h2>
+      <div class="track" role="tablist">
+        <div class="fill" id="fill"></div>
+        <button role="tab" class="step active" data-i="0">TK</button>
+        <button role="tab" class="step" data-i="1">SD</button>
+        <button role="tab" class="step" data-i="2">MTs</button>
+        <button role="tab" class="step" data-i="3">SMK</button>
+      </div>
+      <article class="panel" id="panel" aria-live="polite">
+        <p class="count" id="count"></p>
+        <h3 id="name"></h3>
+        <p id="place"></p>
+      </article>
+      <div class="nav">
+        <button id="prev">Sebelumnya</button>
+        <button id="next">Berikutnya</button>
+      </div>
+    </section>
+    <button class="cta back" data-go="beranda">Kembali ke halaman utama</button>
+  </div>
+
+</main>
+<script>(function () {
+  const schools = [
+    { name: 'TK Air Tiris', place: 'Air Tiris' },
+    { name: 'SD 011 Air Tiris', place: 'Air Tiris' },
+    { name: 'MTs Desa Sawa', place: 'Desa Sawa' },
+    { name: 'SMKN 1 Bangkinang', place: 'Bangkinang, kelas 10 PPLG' }
+  ];
+  const steps = document.querySelectorAll('.step');
+  const panel = document.getElementById('panel');
+  const fill = document.getElementById('fill');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  let i = 0;
+
+  function render() {
+    const s = schools[i];
+    document.getElementById('count').textContent = 'Tahap ' + (i + 1) + ' dari ' + schools.length;
+    document.getElementById('name').textContent = s.name;
+    document.getElementById('place').textContent = s.place;
+    steps.forEach((b, n) => {
+      b.classList.toggle('active', n === i);
+      b.classList.toggle('done', n < i);
+      b.setAttribute('aria-selected', n === i);
+    });
+    fill.style.width = 'calc((100% - 56px) * ' + (i / (schools.length - 1)) + ')';
+    prev.disabled = i === 0;
+    next.disabled = i === schools.length - 1;
+    panel.classList.remove('swap');
+    void panel.offsetWidth;
+    panel.classList.add('swap');
+  }
+
+  steps.forEach(b => b.addEventListener('click', () => { i = +b.dataset.i; render(); }));
+  prev.addEventListener('click', () => { if (i > 0) { i--; render(); } });
+  next.addEventListener('click', () => { if (i < schools.length - 1) { i++; render(); } });
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('sekolah').hidden) return;
+    if (e.key === 'ArrowLeft' && i > 0) { i--; render(); }
+    if (e.key === 'ArrowRight' && i < schools.length - 1) { i++; render(); }
+  });
+  render();
+
+  // Pindah halaman
+  const views = document.querySelectorAll('.view');
+  function go(name) {
+    if (!document.getElementById(name)) name = 'beranda';
+    views.forEach(v => (v.hidden = v.id !== name));
+    window.scrollTo({ top: 0 });
+  }
+  document.querySelectorAll('[data-go]').forEach(el => el.addEventListener('click', () => {
+    history.pushState(null, '', '#' + el.dataset.go);
+    go(el.dataset.go);
+  }));
+  window.addEventListener('popstate', () => go(location.hash.slice(1)));
+  go(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
